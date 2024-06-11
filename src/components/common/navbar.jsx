@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import goodtravels from "../../assets/images/goodtravels.png";
 
@@ -8,6 +8,19 @@ const Navbar = () => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const handleResize = () => {
+    if (window.innerWidth > 768) {
+      setMenuOpen(false);
+    }
+  };
+  useEffect(()=> {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
 
   return (
     <>
@@ -26,9 +39,9 @@ const Navbar = () => {
           <ul
             className={`${
               menuOpen
-                ? "block fixed top-14 left-0 right-0 bg-blue-400 z-10 transition-all duration-300"
-                : "hidden"
-            } md:flex space-x-2 md:space-x-4 md:relative w-full md:w-auto md:bg-transparent mt-4 md:mt-0 p-4 md:p-0 items-center justify-center text-xs md:text-sm`}
+                ? "block fixed top-14 left-0 right-0 bg-blue-400 z-10 transition-all duration-300 md:relative md:fles md:space-x-4 md:bg-transparent md:p-0"
+                : "hidden md:flex md:space-x-4"
+            } space-y-2 md:space-y-0 w-full md:w-auto p-4 md:p-0 items-center justify-center text-xs md:text-sm`}
           >
             <li>
               <NavLink

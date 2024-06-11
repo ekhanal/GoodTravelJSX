@@ -327,7 +327,7 @@ const Data = {
   ],
 };
 const Trip = () => {
-  const [activeButton, setActiveButton] = useState("Beach");
+  const [activeButton, setActiveButton] = useState("Dubai");
   const buttonLabels = [
     "Dubai",
     "Thailand",
